@@ -16,7 +16,8 @@ import FilteredStates as fs
 from matplotlib import pyplot as plt
 
 #calculates AGR from saved data
-N = 12
+
+N = 9
 o = 'open'
 p = 'periodic'
 modex=o
@@ -29,13 +30,13 @@ FullEigFunc = 'False'
 
 gammas = np.linspace(0.5,gammax1,gamamt1)
 
-Nstates=30
+Nstates=10
 J1=1
 J2=1
-phiamt=1000
+phiamt=10
 Nlegs = 3
-Na=8
-Nb=8
+Na=4
+Nb=5
 S = 0.5
 
 

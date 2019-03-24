@@ -6,8 +6,6 @@ Created on Mon Nov  6 23:46:50 2017
 """
 import numpy as np
 import scipy as sp
-import spinops as so
-import spintensor as st
 import itertools
 import time
 from scipy.sparse.linalg import eigsh
@@ -31,7 +29,7 @@ def filterHstates(H, Nstates, enden=0.5, Full='False'):
         
         #E = np.linalg.eigvalsh(H.todense())
         def ExmEigs(param):
-            E, v = sp.sparse.linalg.eigsh(H,1,which=param,tol=1e-8)#finds a single eigenvalue, in this case it's either the largest or smallest based on params
+            E, v = sp.sparse.linalg.eigsh(H,k=1,which=param,tol=1e-8)#finds a single eigenvalue, in this case it's either the largest or smallest based on params
             return(np.asscalar(E))
         params = ['SA','LA']
         Erange= list(map(ExmEigs,params))

@@ -6,8 +6,7 @@ Created on Wed Oct 18 14:53:04 2017
 
 import numpy as np
 import scipy as sp
-import spinops as so
-import spintensor as st
+from TensorOps import spinops as so
 import time
 #create heisenberg hamilitonian with periodic/non-periodic boundary conditions
 #and nearest neighbor and next nearest neighbor interactions
@@ -27,6 +26,7 @@ def H(N,S,J1=1,gamma=0,U=0,delx=1,dely=1,delz=1,beta=1,phi=0,mode='open'):
     
           'mode' sets boundary condition as 'open' or 'periodic'
     """    
+    
     sx = so.sx(S)
     sy = so.sy(S)
     sz = so.sz(S)

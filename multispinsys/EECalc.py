@@ -8,21 +8,17 @@ Created on Thu Mar  7 00:57:00 2019
 
 
 import numpy as np
-import Hamiltonians as H
 import time
 import multiprocessing as mp
 import random
 from multiprocessing import Pool
 import VNEntropy as VN
-import Expand as Ex
 import tools as t
 import os
 import pathlib as pl
-import FilteredStates as fs
-from matplotlib import pyplot as plt
 
 #calculates EE from saved data
-N = 12
+N = 9
 o = 'open'
 p = 'periodic'
 modex=o
@@ -34,13 +30,13 @@ uniform1='False'
 
 gammas = np.linspace(0.5,gammax1,gamamt1)
 
-Nstates=30
+Nstates=10
 J1=1
 J2=1
-phiamt=1000
+phiamt=10
 Nlegs = 3
-Na=6
-Nb=6
+Na=4#have Na be smaller system if applicable: it's faster
+Nb=5
 S = 0.5
 
 
@@ -96,18 +92,19 @@ def getEEgamma(stateset):
     return(np.mean(EEs))
 
 
-if __name__=='__main__':
-    start=time.time()
-    p = Pool(15)   
-    start1 = time.time()
-    SA = [getEEgamma(v) for v in vecs]
-    end1 = time.time()
+#if __name__=='__main__':
+#p = Pool(2)
 
-    print(end1-start1,'Time for EE calculations')
+start=time.time()
+start1 = time.time()
+SA = list(map(getEEgamma,vecs))#[getEEgamma(v) for v in vecs]
+end1 = time.time()
+
+print(end1-start1,'Time for EE calculations')
 
     #saves data for Entropy
-    path1 = pl.PurePath(os.getcwd()).parent/'Data'/str1/'Entropy' ###path and filepaths are objects which allow  
-    filenameEE = 'EE__%dx%d_%dphis_%dNstates_J1_%d__J2_%d__%dgammas_%dgammax__Na_%d__Nb_%d__%sx_%sy_disorder_onX_onY__c%s__uniform_%s' % (N/Nlegs,Nlegs,phiamt,Nstates,J1,J2,gamamt1,gammax1,Na,Nb,modex,modey,c2,uniform1)
-    filepathEE = path1/filenameEE
-    np.save(str(filepathEE),SA)
+path1 = pl.PurePath(os.getcwd()).parent/'Data'/str1/'Entropy' ###path and filepaths are objects which allow  
+filenameEE = 'EE__%dx%d_%dphis_%dNstates_J1_%d__J2_%d__%dgammas_%dgammax__Na_%d__Nb_%d__%sx_%sy_disorder_onX_onY__c%s__uniform_%s' % (N/Nlegs,Nlegs,phiamt,Nstates,J1,J2,gamamt1,gammax1,Na,Nb,modex,modey,c2,uniform1)
+filepathEE = path1/filenameEE
+np.save(str(filepathEE),SA)
 

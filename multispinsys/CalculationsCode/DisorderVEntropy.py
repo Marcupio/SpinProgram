@@ -16,6 +16,7 @@ import multiprocessing as mp
 from matplotlib import pyplot as plt
 import time
 
+#Older Code Use EECalc instead
 def DisVEntOld(N,Nlegs,Na,Nb,phiamt,Nstates=30,Jcurr=0,J1=1,J2=0,gamamt=50, modex2='open', modey2='open'):
 
     '''

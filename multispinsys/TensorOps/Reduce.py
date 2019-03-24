@@ -5,8 +5,8 @@ Created on Sat Feb 10 19:40:20 2018
 @author: crius
 """
 import numpy as np
-import spinops as so
-import spintensor as st
+from TensorOps import spinops as so
+from TensorOps import spintensor as st
 import scipy as sp
 import time
 

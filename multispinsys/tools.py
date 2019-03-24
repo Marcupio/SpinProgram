@@ -8,8 +8,8 @@ import time
 import numpy as np
 import copy
 import itertools
-import spinops as so
-import spintensor as st
+from TensorOps import spinops as so
+from TensorOps import spintensor as st
 exp = np.exp
 
 #Various support functions used throughout the program. Most involve manipulating the

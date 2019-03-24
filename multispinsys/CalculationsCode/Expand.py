@@ -6,10 +6,10 @@ Created on Wed Mar 21 16:30:05 2018
 """
 
 import numpy as np
-import spintensor as st
-import spinops as so
 import itertools
 
+
+#this has been incorporated into the tools module
 #expands state to the full Hilbert space dimension, this is needed in the EE calculation
 def Expand(Statevec,S,N,Jcurr):
     
